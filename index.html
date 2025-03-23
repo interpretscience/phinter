@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Under Construction</title>
+  <!-- Quicksand font -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --primary-color: #001f54;
+      --secondary-color: #ffb400;
+      --text-color: #ffffff;
+      --hover-bg: #ffffff;
+      --hover-text: #001f54;
+      --font-heading: 'Quicksand', sans-serif;
+      --font-text: 'Quicksand', sans-serif;
+      --section-padding: 100px 20px;
+    }
+
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-text);
+      background-color: #f5f5f5;
+      overflow-x: hidden; /* Only hides horizontal overflow, so vertical scrolling is allowed */
+    }
+
+    /* Header (pinned at top) */
+    header {
+      background-color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center; /* centers the logo */
+      padding: 10px 40px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 9998;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      border-bottom: 5px solid var(--text-color);
+      backdrop-filter: blur(10px);
+    }
+
+    .logo-container {
+      position: relative;
+    }
+
+    .logo {
+      height: 60px;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+
+    .logo.secondary {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      border-radius: 5px;
+    }
+
+    .logo-container:hover .primary {
+      opacity: 0;
+    }
+
+    .logo-container:hover .secondary {
+      opacity: 1;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      width: 100%;
+      /* Remove min-height: 100vh so the page can expand if content is taller than the viewport */
+      padding-top: 150px; /* Extra space for the fixed header */
+      padding-bottom: 120px; /* Increase bottom padding to avoid overlap with pinned footer */
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      z-index: 1;
+    }
+
+    .hero video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1; /* behind hero content */
+    }
+
+    /* Gradient overlay on the video */
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 31, 84, 0.75),
+        rgba(255, 255, 255, 0.886)
+      );
+      z-index: -1;
+    }
+
+    /* Blinking effect keyframes for hero title */
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Hero title: larger, white, and blinking */
+    .hero-title {
+      font-size: 2.5rem;
+      margin: 20px 0;
+      color: #fff;
+      font-weight: 700;
+      text-align: center;
+      animation: blink 1.5s infinite;
+    }
+
+    /* Hero text: fully justified, black, and spanning nearly the full width */
+    .hero-text {
+      font-size: 1.5rem;
+      margin: 30px auto 20px auto;
+      color: #000;
+      font-weight: 700;
+      text-align: justify;
+      width: 90%;
+      max-width: 800px;
+    }
+
+    /* Footer (pinned at bottom) with two rows */
+    footer {
+      background-color: var(--primary-color);
+      color: var(--text-color);
+      padding: 10px 40px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 9999;
+      box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* First row: social icons (extreme left and right) */
+    .social-row {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Copyright */
+    .copy-row {
+      width: 100%;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+
+    footer a {
+      color: var(--text-color);
+      text-decoration: none;
+    }
+
+    /* Footer icons: increased size */
+    .mail-icon,
+    .linkedin-logo {
+      height: 50px;
+      transition: opacity 0.3s ease;
+    }
+
+    .mail-icon:hover,
+    .linkedin-logo:hover {
+      opacity: 0.8;
+    }
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 768px) {
+      header {
+        padding: 10px 20px;
+      }
+      .logo {
+        height: 50px;
+      }
+      .hero {
+        padding-top: 120px;
+        padding-bottom: 100px; /* still more bottom padding to avoid overlap */
+      }
+      .hero-title {
+        font-size: 2rem;
+        margin: 15px 0;
+      }
+      .hero-text {
+        font-size: 1.2rem;
+        margin: 20px auto;
+        width: 95%;
+      }
+      footer {
+        padding: 10px 20px;
+      }
+      .mail-icon,
+      .linkedin-logo {
+        height: 40px;
+      }
+      .copy-row {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <img src="assetss/logo2.png" alt="Primary Logo" class="logo primary" />
+      <img src="assetss/logo3.png" alt="Secondary Logo" class="logo secondary" />
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <video src="assetss/video2.mp4" autoplay muted loop></video>
+    <!-- Hero title with blinking effect -->
+    <p class="hero-title">🚧 Website under construction 🚧</p>
+    <!-- Hero text -->
+    <p class="hero-text">
+      The world is evolving at an unprecedented pace. Industries are
+      transforming, technology is disrupting norms, and the demand for
+      skilled professionals has never been higher. But amidst this rapid
+      change, a crucial gap remains—one that separates aspiring talent
+      from real-world industry readiness.
+      <br><br>
+      But here’s the real question: Are you ready to step beyond
+      theoretical knowledge and immerse yourself in the world of
+      practical, industry-driven innovation? The future has always
+      belonged to those who take action. Are you one of them?
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-row">
+      <a href="mailto:info@interpretscience.com">
+        <img src="assetss/mail.png" alt="Mail Icon" class="mail-icon" />
+      </a>
+      <a href="https://www.linkedin.com/company/interpret-science" target="_blank">
+        <img src="assetss/in.png" alt="LinkedIn Icon" class="linkedin-logo" />
+      </a>
+    </div>
+    <div class="copy-row">
+      © 2025 Interpret Science LLC. All Rights Reserved.
+    </div>
+  </footer>
+</body>
+</html>
